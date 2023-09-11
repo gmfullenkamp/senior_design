@@ -19,5 +19,12 @@
    darsttd@mail.uc.edu
 
 ## Project Topic Area:
-- Semantic Segmentation
-- Labeling GUI
+- Reinforcement Learning
+- Unity Environment Simulations
+
+## Advisor:
+- Bayley King Phd
+
+   bayleyking13@gmail.com
+
+   bking2@udayton.edu
