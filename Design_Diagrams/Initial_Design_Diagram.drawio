@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2023-09-21T17:19:27.141Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="-3Zzl79YCsRErfEtyJ_L" version="21.8.0" type="device">
+  <diagram name="Page-1" id="xANuIiv8hHhX_JfIcidV">
+    <mxGraphModel dx="2135" dy="663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eCRfGHdHh0hdNU6SM7LW-1" value="User Interaction&lt;br&gt;- User (developers) pair-programs to create and modify the game.&lt;br&gt;- User defines game rules, mechanics, and objectives." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-400" y="200" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-1" target="e8c8cWtUgy6uci36puhM-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-1" value="Game Development (LLM)&lt;br&gt;- User-developers collaborate to build the game from scratch.&lt;br&gt;- The game&#39;s complexity and features are incrementally developed and enhanced." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="200" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-2" target="e8c8cWtUgy6uci36puhM-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-2" target="e8c8cWtUgy6uci36puhM-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-2" target="e8c8cWtUgy6uci36puhM-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-2" value="Unity Simulation Environment&lt;br&gt;- Unity is used for rendering and simulation the game.&lt;br&gt;- The game world and assets are created in Unity." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="360" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-3" target="e8c8cWtUgy6uci36puhM-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-3" value="Reinforcement Learning Agent:&lt;br&gt;- The RL agent is trained to play the game using various reinforcement learning algorithms.&lt;br&gt;- It learns from interacting with the game environment." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="520" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-4" target="e8c8cWtUgy6uci36puhM-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-4" value="Learning Algorithm&lt;br&gt;- Reinforcement learning algorithm adapt and learn based on the game&#39;s rules and mechanics.&lt;br&gt;- Algorithms guide the RL agent&#39;s decision-making process." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry y="520" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-5" target="e8c8cWtUgy6uci36puhM-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-5" value="Training Loop:&lt;br&gt;- Manages the RL training process, including episode generation and policy updates.&lt;br&gt;- Monitors and logs the agent&#39;s learning progress." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-6" target="e8c8cWtUgy6uci36puhM-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-6" value="Game Evolution:&lt;br&gt;- As the game&#39;s complexity and features increase, the game rules evolve.&lt;br&gt;- The game environment presents new challenges for the RL agent to learn from." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry y="200" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-7" value="Adversarial Mechanism (Game Rules Evolution):&lt;br&gt;- The game rules evolve to introduce new challenges or scenarios for the RL agent.&lt;br&gt;- Game rules aim to outsmart the RL agent and test its adaptibility." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-8" target="e8c8cWtUgy6uci36puhM-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-8" value="Visualization and Evaluation:&lt;br&gt;- Real-time visualization of the RL agent&#39;s gameplay and learning progress.&lt;br&gt;- Metrics and feedback on the RL agent&#39;s performance against evolving game rules." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="360" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-9" value="User Feedback:&lt;br&gt;- User-developers observe how the RL agent adapts to changing game rules.&lt;br&gt;- The can adjust game parameters and introduce mechanics." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="520" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-10" target="e8c8cWtUgy6uci36puhM-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-10" value="External Resources:&lt;br&gt;- Game assets, graphics, and sound effects for creating and enhancing the game.&lt;br&gt;- External libraries or tools for reinforcement learning and game development." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="20" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-11" target="e8c8cWtUgy6uci36puhM-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-11" value="Environment Interface:&lt;br&gt;- Bridges the Unity game environment and Python RL agent.&lt;br&gt;- Exchanges observations and actions between Unity and Python." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="360" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-7" target="e8c8cWtUgy6uci36puhM-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="350" as="sourcePoint" />
+            <mxPoint x="160" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-27" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="e8c8cWtUgy6uci36puhM-9" target="e8c8cWtUgy6uci36puhM-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="390" as="sourcePoint" />
+            <mxPoint x="160" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-29" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eCRfGHdHh0hdNU6SM7LW-1" target="e8c8cWtUgy6uci36puhM-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="390" as="sourcePoint" />
+            <mxPoint x="160" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8c8cWtUgy6uci36puhM-30" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="80" width="1000" height="680" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
