@@ -1,2 +1,4 @@
 *.dll
 Snake/Library/
+Snake/Packages/
+Snake/Logs/
