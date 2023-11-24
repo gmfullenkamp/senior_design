@@ -1,120 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Snake : MonoBehaviour
 {
-    // Reference to the Snake's body prefab
-    public GameObject snakeBodyPrefab;
+    // Current Movement Direction (by default it moves to the right)
+    Vector2 dir = Vector2.right;
 
-    // Speed at which the snake moves
-    public float moveSpeed = 5f;
+    // Keep track of tail
+    List<Transform> tail = new List<Transform>();
 
-    // Initial direction of the snake
-    private Vector2 moveDirection = Vector2.right;
+    // Did the snake eat something?
+    bool ate = false;
 
-    // List to store the body segments of the snake
-    private List<Transform> bodySegments = new List<Transform>();
-
-    // Flag to check if the snake ate food
-    private bool ateFood = false;
+    // Tail prefab
+    public GameObject tailPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize the snake with a few body segments
-        InitializeSnake();
-        
-        // Call Move function to start moving the snake
-        InvokeRepeating("Move", 0.1f, 1.0f / moveSpeed);
+        // Move the Snake every 300ms
+        InvokeRepeating("Move", 0.3f, 0.3f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Handle user input to change the snake's direction
-        if (Input.GetKeyDown(KeyCode.UpArrow) && moveDirection != Vector2.down)
-        {
-            moveDirection = Vector2.up;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && moveDirection != Vector2.up)
-        {
-            moveDirection = Vector2.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && moveDirection != Vector2.right)
-        {
-            moveDirection = Vector2.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && moveDirection != Vector2.left)
-        {
-            moveDirection = Vector2.right;
-        }
+        // Move in a new Direction
+        if (Input.GetKey(KeyCode.RightArrow))
+            dir = Vector2.right;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            dir = -Vector2.up;  // -up means down
+        else if (Input.GetKey(KeyCode.LeftArrow))
+            dir = -Vector2.right;  // -right means left
+        else if (Input.GetKey(KeyCode.UpArrow))
+            dir = Vector2.up;
     }
 
-    // Initialize the snake with a few body segments
-    void InitializeSnake()
-    {
-        // Add a few initial body segments
-        for (int i = 0; i < 3; i++)
-        {
-            AddBodySegment();
-        }
-    }
-
-    // Move the snake
     void Move()
     {
-        // Save the current position of the head
-        Vector2 previousPosition = transform.position;
+        // Save current position
+        Vector2 v = transform.position;
 
-        // Move the head in the specified direction
-        transform.Translate(moveDirection);
+        // Move head into new direction
+        transform.Translate(dir);
 
-        // Check if the snake ate food
-        if (ateFood)
+        // Ate something?
+        if (ate)
         {
-            // Add a new body segment to the snake
-            AddBodySegment();
+            // Load prefab into the world
+            GameObject g = (GameObject)Instantiate(tailPrefab,
+                                                   v,
+                                                   Quaternion.identity);
 
-            // Reset the ateFood flag
-            ateFood = false;
+            // Keep track of it in our tail list
+            tail.Insert(0, g.transform);
+
+            // Reset the flag
+            ate = false;
         }
-
-        // Move the body segments
-        for (int i = 0; i < bodySegments.Count; i++)
+        // Do we have a tail?
+        else if (tail.Count > 0)
         {
-            Vector2 currentPos = bodySegments[i].position;
-            bodySegments[i].position = previousPosition;
-            previousPosition = currentPos;
+            // Move last tail element to where the head was
+            tail.Last().position = v;
+
+            // Add to front of list, remove from the back
+            tail.Insert(0, tail.Last());
+            tail.RemoveAt(tail.Count - 1);
         }
     }
 
-    // Add a body segment to the snake
-    void AddBodySegment()
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        // Instantiate a new body segment prefab
-        GameObject bodySegment = Instantiate(snakeBodyPrefab, new Vector2(-10, -10), Quaternion.identity);
-
-        // Add it to the bodySegments list
-        bodySegments.Add(bodySegment.transform);
-    }
-
-    // Handle collisions
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Check if the snake collided with food
-        if (other.CompareTag("Food"))
+        // Food?
+        if (coll.name.StartsWith("FoodPrefab"))
         {
-            // Destroy the food
-            Destroy(other.gameObject);
+            // Get longer in next Move call
+            ate = true;
 
-            // Set the ateFood flag to true
-            ateFood = true;
+            // Remove the food
+            Destroy(coll.gameObject);
         }
+        // Collided with tail or border
         else
         {
-            // The snake collided with something else (e.g., wall or itself)
-            // Handle game over logic here
+            // TODO: you lose screen
         }
     }
 }
