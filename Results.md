@@ -42,7 +42,7 @@ This document details the journey of developing a reinforcement learning (RL) ag
 - **Outcome**: This strategy encouraged the snake to actively search for food while avoiding walls.
 
 ### Training Evolution
-- **Initial Training**: Conducted on a smaller 5x5 grid, achieving a high score of 10 food items consumed.
+- **Initial Training**: Conducted on a smaller 5x5 grid, achieving a high score of 7 food items consumed.
 - **Image Placeholder**: *\[Add training process image here\]*
 
 ## Phase 3: Fine-Tuning and Scaling Up
