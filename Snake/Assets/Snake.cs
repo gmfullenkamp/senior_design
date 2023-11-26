@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Sensors;
 using System.Linq;
 
-public class Snake : MonoBehaviour
+public class Snake : Agent
 {
     // Current Movement Direction (by default it moves to the right)
     Vector2 dir = Vector2.right;
@@ -17,31 +20,124 @@ public class Snake : MonoBehaviour
     // Tail prefab
     public GameObject tailPrefab;
 
-    // Start is called before the first frame update
-    void Start()
+    // Food prefab
+    public Transform foodPrefab;
+
+    // Walls
+    public Transform borderTop;
+    public Transform borderBottom;
+    public Transform borderLeft;
+    public Transform borderRight;
+
+    // Movement interval in seconds
+    public float moveInterval = 0.01f;
+    private float timeSinceLastMove;
+
+    // Begin a training session
+    public override void OnEpisodeBegin()
     {
-        // Move the Snake every 300ms
-        InvokeRepeating("Move", 0.3f, 0.3f);
+        // Reset snake position, tail, and food
+        transform.localPosition = Vector2.zero;
+        ResetTail();
+        ate = false;
+        ClearFood();
+        SpawnFood();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Reset tail
+    void ResetTail()
     {
-        // Move in a new Direction
+        foreach (Transform segment in tail)
+        {
+            Destroy(segment.gameObject);
+        }
+        tail.Clear();
+    }
+
+    void SpawnFood()
+    {
+        // Ensure any existing food is cleared first
+        ClearFood();
+
+        // x position between left and right border
+        int x = (int)Random.Range(borderLeft.localPosition.x, borderRight.localPosition.x);
+
+        // y position between top and bottom border
+        int y = (int)Random.Range(borderBottom.localPosition.y, borderTop.localPosition.y);
+
+        // Instantiate the food at (x, y)
+        Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
+    }
+
+    void ClearFood()
+    {
+        GameObject[] foods = GameObject.FindGameObjectsWithTag("Food");
+        foreach (GameObject food in foods)
+        {
+            Destroy(food);
+        }
+    }
+
+    // ML observations
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(foodPrefab.localPosition);
+        sensor.AddObservation(borderTop.localPosition);
+        sensor.AddObservation(borderBottom.localPosition);
+        sensor.AddObservation(borderLeft.localPosition);
+        sensor.AddObservation(borderRight.localPosition);
+    }
+
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+        // Map actions to movement directions
+        int moveDirection = actions.DiscreteActions[0];
+        switch (moveDirection)
+        {
+            case 0: dir = Vector2.right; break;
+            case 1: dir = Vector2.up; break;
+            case 2: dir = -Vector2.right; break;
+            case 3: dir = -Vector2.up; break;
+        }
+
+        // Update the timer
+        timeSinceLastMove += Time.deltaTime;
+
+        // Move if the interval has passed
+        if (timeSinceLastMove >= moveInterval)
+        {
+            Move();
+            timeSinceLastMove = 0;
+        }
+    }
+
+    // Player control
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        var discreteActions = actionsOut.DiscreteActions;
         if (Input.GetKey(KeyCode.RightArrow))
-            dir = Vector2.right;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            dir = -Vector2.up;  // -up means down
-        else if (Input.GetKey(KeyCode.LeftArrow))
-            dir = -Vector2.right;  // -right means left
+        {
+            discreteActions[0] = 0;
+        }
         else if (Input.GetKey(KeyCode.UpArrow))
-            dir = Vector2.up;
+        {
+            discreteActions[0] = 1;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            discreteActions[0] = 2;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            discreteActions[0] = 3;
+        }
     }
 
     void Move()
     {
         // Save current position
-        Vector2 v = transform.position;
+        Vector2 v = transform.localPosition;
 
         // Move head into new direction
         transform.Translate(dir);
@@ -74,6 +170,7 @@ public class Snake : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        Debug.Log(coll.name);
         // Food?
         if (coll.name.StartsWith("FoodPrefab"))
         {
@@ -82,11 +179,24 @@ public class Snake : MonoBehaviour
 
             // Remove the food
             Destroy(coll.gameObject);
+
+            // Reward!
+            SetReward(+100f);
+
+            // Spawn new food after eating
+            SpawnFood();
         }
         // Collided with tail or border
+        else if (coll.CompareTag("Wall") || coll.CompareTag("Tail"))
+        {
+            // Wall hit :(
+            SetReward(-10000f);
+            EndEpisode();
+        }
+        // Didn't find anything
         else
         {
-            // TODO: you lose screen
+            SetReward(-1f);
         }
     }
 }
