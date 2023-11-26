@@ -33,7 +33,9 @@
 [User Stories Content](User_Stories.md)
 
 ### Design Diagrams
-[Design Diagrams Content](Design_Diagrams/Design_Diagram_0.png)(Design_Diagrams/Design_Diagram_1.png)(Design_Diagrams/Design_Diagram_2.png)
+[Design Diagram 0](Design_Diagrams/Design_Diagram_0.png)
+[Design Diagram 1](Design_Diagrams/Design_Diagram_1.png)
+[Design Diagram 2](Design_Diagrams/Design_Diagram_2.png)
 
 ## Project Tasks and Timeline
 ### Task List
@@ -52,10 +54,11 @@
 [PPT Slideshow Content](PPT_Slideshow.pdf)
 
 ## Self-Assessment Essays
-[Self-Assessment Essays Content](Homework_Essays/Fullenkamp_Individual_Capstone_Assessment.pdf)
+[Self-Assessment Essay Fullenkamp](Homework_Essays/Fullenkamp_Individual_Capstone_Assessment.pdf)
 
 ## Professional Biographies
-[Professional Biographies Content](Grant_Fullenkamp.md)(Noah_Neinen.md)
+[Professional Biography Fullenkamp](Grant_Fullenkamp.md)
+[Professional Biography Heinen](Noah_Heinen.md)
 
 ## Budget
 [Budget Content](Budget.md)
