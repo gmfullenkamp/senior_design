@@ -14,9 +14,6 @@
 - Roshan Krishnan: Computer Science
 
    krishnr2@mail.uc.edu
-- Trevor Darst: Computer Science
-
-   darsttd@mail.uc.edu
 
 ## Project Topic Area:
 - Reinforcement Learning

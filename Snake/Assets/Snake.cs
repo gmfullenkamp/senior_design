@@ -17,6 +17,9 @@ public class Snake : Agent
     // Did the snake eat something?
     bool ate = false;
 
+    // Distance from snake head to food
+    private float lastDistanceToFood;
+
     // Tail prefab
     public GameObject tailPrefab;
 
@@ -61,9 +64,11 @@ public class Snake : Agent
 
         // x position between left and right border
         int x = (int)Random.Range(borderLeft.localPosition.x, borderRight.localPosition.x);
+        // int x = 3;
 
         // y position between top and bottom border
         int y = (int)Random.Range(borderBottom.localPosition.y, borderTop.localPosition.y);
+        // int y = 2;
 
         // Instantiate the food at (x, y)
         Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
@@ -83,10 +88,10 @@ public class Snake : Agent
     {
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(foodPrefab.localPosition);
-        sensor.AddObservation(borderTop.localPosition);
-        sensor.AddObservation(borderBottom.localPosition);
-        sensor.AddObservation(borderLeft.localPosition);
-        sensor.AddObservation(borderRight.localPosition);
+        // sensor.AddObservation(borderTop.localPosition);
+        // sensor.AddObservation(borderBottom.localPosition);
+        // sensor.AddObservation(borderLeft.localPosition);
+        // sensor.AddObservation(borderRight.localPosition);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -108,6 +113,7 @@ public class Snake : Agent
         if (timeSinceLastMove >= moveInterval)
         {
             Move();
+            RewardBasedOnDistanceToFood();
             timeSinceLastMove = 0;
         }
     }
@@ -168,6 +174,24 @@ public class Snake : Agent
         }
     }
 
+    void RewardBasedOnDistanceToFood()
+    {
+        float currentDistanceToFood = Vector2.Distance(transform.localPosition, foodPrefab.localPosition);
+
+        // Reward for moving closer, penalize for moving away
+        if (currentDistanceToFood < lastDistanceToFood)
+        {
+            SetReward(0.01f); // Small reward for moving closer
+        }
+        else
+        {
+            SetReward(-0.01f); // Small penalty for moving away
+        }
+
+        // Update the last distance for the next frame
+        lastDistanceToFood = currentDistanceToFood;
+    }
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         Debug.Log(coll.name);
@@ -181,7 +205,7 @@ public class Snake : Agent
             Destroy(coll.gameObject);
 
             // Reward!
-            SetReward(+100f);
+            SetReward(+1f);
 
             // Spawn new food after eating
             SpawnFood();
@@ -190,13 +214,8 @@ public class Snake : Agent
         else if (coll.CompareTag("Wall") || coll.CompareTag("Tail"))
         {
             // Wall hit :(
-            SetReward(-10000f);
+            SetReward(-10f);
             EndEpisode();
-        }
-        // Didn't find anything
-        else
-        {
-            SetReward(-1f);
         }
     }
 }

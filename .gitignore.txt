@@ -2,3 +2,4 @@
 Snake/Library/
 Snake/Packages/
 Snake/Logs/
+results/
