@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 96327155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -315,7 +315,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 60
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -358,11 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ffa651af1f66a439bce6bf30fec12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 7161670374354242089, guid: 51b141c4c833733448df67d0e3a67834, type: 3}
-  borderTop: {fileID: 1301129965}
-  borderBottom: {fileID: 1925768075}
-  borderLeft: {fileID: 96327158}
-  borderRight: {fileID: 1615653500}
 --- !u!1 &1301129962
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +482,7 @@ Transform:
   m_GameObject: {fileID: 1301129962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -701,7 +696,7 @@ Transform:
   m_GameObject: {fileID: 1615653497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -831,7 +826,7 @@ Transform:
   m_GameObject: {fileID: 1925768072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -848,6 +843,10 @@ PrefabInstance:
     - target: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3168549295201840778, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -906,6 +905,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2825425881463005959}
+    - targetCorrespondingSourceObject: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2825425881463005964}
   m_SourcePrefab: {fileID: 100100000, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
 --- !u!1 &2825425881463005949 stripped
 GameObject:
@@ -927,7 +929,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 10000
+  MaxStep: 2000
   tailPrefab: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
   foodPrefab: {fileID: 303589142199753816, guid: 51b141c4c833733448df67d0e3a67834, type: 3}
   borderTop: {fileID: 1301129965}
@@ -979,6 +981,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 1
   TakeActionsBetweenDecisions: 1
+--- !u!114 &2825425881463005964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825425881463005949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Wall
+  - Food
+  m_RaysPerDirection: 5
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 25
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 33
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -181,11 +181,11 @@ public class Snake : Agent
         // Reward for moving closer, penalize for moving away
         if (currentDistanceToFood < lastDistanceToFood)
         {
-            SetReward(0.01f); // Small reward for moving closer
+            SetReward(0.04f); // Small reward for moving closer
         }
         else
         {
-            SetReward(-0.01f); // Small penalty for moving away
+            SetReward(-0.05f); // Small penalty for moving away
         }
 
         // Update the last distance for the next frame
