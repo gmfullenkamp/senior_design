@@ -67,10 +67,14 @@
 
 ## Self-Assessment Essays
 [Self-Assessment Essay Fullenkamp](Homework_Essays/Fullenkamp_Individual_Capstone_Assessment.pdf)
+[Self-Assessment Essay Heinen](Homework_Essays/Noah_Heinen_Individual.pdf)
+[Self-Assessment Essay Krishnan](Homework_Essays/Roshan_Individual.pdf)
 
 ## Professional Biographies
-[Professional Biography Fullenkamp](Grant_Fullenkamp.md)
-[Professional Biography Heinen](Noah_Heinen.md)
+[Professional Biography Fullenkamp](Homework_Essays/Biographies/Grant_Fullenkamp.md)
+[Professional Biography Heinen](Homework_Essays/Biographies/Noah_Heinen.md)
+[Professional Biography Krishnan](Homework_Essays/Biographies/Grant_Fullenkamp.md)
+
 
 ## Budget
 [Budget Content](Budget.md)
