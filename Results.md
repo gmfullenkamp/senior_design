@@ -17,6 +17,7 @@ This document details the journey of developing a reinforcement learning (RL) ag
 ### Implementation Details
 - **Programming Language**: Utilized C# for game development.
 - **Key Challenges**: Ensuring smooth movement and accurate collision detection.
+- [Snake Game Play Example](Snake_Example.png)
 
 ## Phase 2: Integrating ML-Agents
 

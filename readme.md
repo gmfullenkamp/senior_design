@@ -64,6 +64,7 @@
 
 ## PPT Slideshow
 [PPT Slideshow Content](PPT_Slideshow.pdf)
+[PPT Slideshow Presentation Video](https://docs.google.com/presentation/d/1vy3e9rN0GXNa-4BOibAeLb_5lTGI1_t1juLa8nzNsdU/edit?usp=sharing)
 
 ## Self-Assessment Essays
 [Self-Assessment Essay Fullenkamp](Homework_Essays/Fullenkamp_Individual_Capstone_Assessment.pdf)
