@@ -2,4 +2,6 @@
 Snake/Library/
 Snake/Packages/
 Snake/Logs/
+Snake/Temp/
 results/
+.venv/
