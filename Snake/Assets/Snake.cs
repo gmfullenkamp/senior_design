@@ -9,7 +9,7 @@ using System.Linq;
 public class Snake : Agent
 {
     // Current Movement Direction (by default it moves to the right)
-    Vector2 dir = Vector2.right;
+    private Vector2 dir;
 
     // Keep track of tail
     List<Transform> tail = new List<Transform>();
@@ -117,6 +117,7 @@ public class Snake : Agent
             case 1: dir = Vector2.up; break;
             case 2: dir = -Vector2.right; break;
             case 3: dir = -Vector2.up; break;
+            case 4: dir = dir; break;
         }
 
         // Update the timer
@@ -150,6 +151,10 @@ public class Snake : Agent
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             discreteActions[0] = 3;
+        }
+        else
+        {
+            discreteActions[0] = 4;
         }
     }
 
