@@ -1,4 +1,5 @@
 *.dll
+*.pyc
 Snake/Library/
 Snake/Packages/
 Snake/Logs/
