@@ -59,16 +59,29 @@ public class Snake : Agent
 
     void SpawnFood()
     {
-        // Ensure any existing food is cleared first
-        ClearFood();
+        bool isPositionOccupied;
+        int x, y;
+        do
+        {
+            isPositionOccupied = false;
 
-        // x position between left and right border
-        int x = (int)Random.Range(borderLeft.localPosition.x, borderRight.localPosition.x);
-        // int x = 3;
+            // x position between left and right border
+            x = (int)Random.Range(borderLeft.localPosition.x + 1, borderRight.localPosition.x - 1);
 
-        // y position between top and bottom border
-        int y = (int)Random.Range(borderBottom.localPosition.y, borderTop.localPosition.y);
-        // int y = 2;
+            // y position between top and bottom border
+            y = (int)Random.Range(borderBottom.localPosition.y + 1, borderTop.localPosition.y - 1);
+
+            Vector2 potentialPosition = new Vector2(x, y);
+
+            // Convert the snake head's position to Vector2 for comparison
+            Vector2 snakeHeadPosition = new Vector2(transform.localPosition.x, transform.localPosition.y);
+
+            // Check if the potential position is occupied by the snake's head or any part of its tail
+            if (snakeHeadPosition == potentialPosition || tail.Any(segment => new Vector2(segment.localPosition.x, segment.localPosition.y) == potentialPosition))
+            {
+                isPositionOccupied = true;
+            }
+        } while (isPositionOccupied); // Repeat until an unoccupied position is found
 
         // Instantiate the food at (x, y)
         Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
