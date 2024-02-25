@@ -5,5 +5,6 @@ Snake/Library/
 Snake/Packages/
 Snake/Logs/
 Snake/Temp/
+Snake/SnakeGameLog_*.txt
 results/
 .venv/

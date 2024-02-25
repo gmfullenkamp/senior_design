@@ -5,6 +5,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using System.Linq;
+using System.IO;
 
 public class Snake : Agent
 {
@@ -36,6 +37,9 @@ public class Snake : Agent
     public float moveInterval = 0.01f;
     private float timeSinceLastMove;
 
+    // StreamWriter for logging
+    private StreamWriter logWriter;
+
     // Begin a training session
     public override void OnEpisodeBegin()
     {
@@ -45,6 +49,12 @@ public class Snake : Agent
         ate = false;
         ClearFood();
         SpawnFood();
+
+        // Initialize StreamWriter with a unique file name for each game session
+        string fileName = $"SnakeGameLog_{System.DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
+        logWriter = new StreamWriter(fileName, true);
+        logWriter.WriteLine("Game Start");
+        logWriter.WriteLine($"Initial Position: {transform.localPosition}, Tail Length: {tail.Count}");
     }
 
     // Reset tail
@@ -165,6 +175,7 @@ public class Snake : Agent
 
         // Move head into new direction
         transform.Translate(dir);
+        logWriter.WriteLine($"Move: {dir}, Position After Move: {transform.localPosition}");
 
         // Ate something?
         if (ate)
@@ -176,6 +187,7 @@ public class Snake : Agent
 
             // Keep track of it in our tail list
             tail.Insert(0, g.transform);
+            logWriter.WriteLine($"Ate Food: New Tail Segment at {v}");
 
             // Reset the flag
             ate = false;
@@ -218,6 +230,7 @@ public class Snake : Agent
         {
             // Get longer in next Move call
             ate = true;
+            logWriter.WriteLine("Ate Food, Spawning New Food");
 
             // Remove the food
             Destroy(coll.gameObject);
@@ -233,6 +246,9 @@ public class Snake : Agent
         {
             // Wall hit :(
             SetReward(-10f);
+            logWriter.WriteLine("Collision Detected, Game Over");
+            logWriter.WriteLine($"Final Score {tail.Count}");
+            logWriter.Close();
             EndEpisode();
         }
     }
