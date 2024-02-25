@@ -1,5 +1,5 @@
 from langchain.indexes import VectorstoreIndexCreator
-from langchain.document_loaders import CSVLoader, UnstructuredWordDocumentLoader, \
+from langchain_community.document_loaders import CSVLoader, UnstructuredWordDocumentLoader, \
     UnstructuredHTMLLoader, UnstructuredMarkdownLoader, PDFMinerLoader, \
     UnstructuredPowerPointLoader, TextLoader, PythonLoader
     

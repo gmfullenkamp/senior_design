@@ -1,8 +1,8 @@
 """
 This module is for the OpenAIModel class.
 """
-from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.llms import OpenAI
+from langchain_openai import OpenAIEmbeddings
+from langchain_openai import OpenAI
 
 from api_keys import OPENAI_API_KEY
 from models.base_model import BaseModel

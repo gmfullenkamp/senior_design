@@ -1,5 +1,6 @@
 *.dll
 *.pyc
+LLM/api_keys.py
 Snake/Library/
 Snake/Packages/
 Snake/Logs/
