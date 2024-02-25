@@ -40,6 +40,6 @@ python -m pip install --upgrade pip
 ```
 2. Install necessary Python packages:
 ```cmd
-pip install torch mlagents packaging onnx protobuf==3.20.2
+pip install -r requirements.txt
 ```
 3. After completing these steps, your development environment will be ready for working on the project. If you encounter any issues, please refer to the respective documentation of Python, Unity, or the packages for troubleshooting.
