@@ -40,6 +40,14 @@ public class Snake : Agent
     // StreamWriter for logging
     private StreamWriter logWriter;
 
+    // Updated rewards
+    private const float rewardForEatingFood = 1.5f; // Increased reward for eating food
+    private const float rewardForSurvivalPerStep = 0.01f; // New survival reward for each step without dying
+    private const float penaltyForGameOver = -5f; // Reduced penalty for hitting walls or tail
+    private const float baseRewardForMovingTowardsFood = 0.05f; // Base reward for moving towards food
+    private const float penaltyForMovingAwayFromFood = -0.02f; // Adjusted penalty for moving away from food
+
+
     // Begin a training session
     public override void OnEpisodeBegin()
     {
@@ -202,20 +210,28 @@ public class Snake : Agent
             tail.Insert(0, tail.Last());
             tail.RemoveAt(tail.Count - 1);
         }
+
+        // Survival reward
+        AddReward(rewardForSurvivalPerStep);
     }
 
     void RewardBasedOnDistanceToFood()
     {
         float currentDistanceToFood = Vector2.Distance(transform.localPosition, foodPrefab.localPosition);
 
-        // Reward for moving closer, penalize for moving away
-        if (currentDistanceToFood < lastDistanceToFood)
+        // Calculate change in distance to food
+        float distanceChange = lastDistanceToFood - currentDistanceToFood;
+
+        // Reward or penalize based on the change in distance
+        if (distanceChange > 0)
         {
-            SetReward(0.04f); // Small reward for moving closer
+            // Scale reward by the distance change, encourage moving closer
+            AddReward(baseRewardForMovingTowardsFood * distanceChange);
         }
-        else
+        else if (distanceChange < 0)
         {
-            SetReward(-0.05f); // Small penalty for moving away
+            // Scale penalty by the distance change, discourage moving away
+            AddReward(penaltyForMovingAwayFromFood * Mathf.Abs(distanceChange));
         }
 
         // Update the last distance for the next frame
@@ -236,7 +252,7 @@ public class Snake : Agent
             Destroy(coll.gameObject);
 
             // Reward!
-            SetReward(+1f);
+            AddReward(rewardForEatingFood);
 
             // Spawn new food after eating
             SpawnFood();
@@ -245,7 +261,7 @@ public class Snake : Agent
         else if (coll.CompareTag("Wall") || coll.CompareTag("Tail"))
         {
             // Wall hit :(
-            SetReward(-10f);
+            AddReward(penaltyForGameOver);
             logWriter.WriteLine("Collision Detected, Game Over");
             logWriter.WriteLine($"Final Score {tail.Count}");
             logWriter.Close();
