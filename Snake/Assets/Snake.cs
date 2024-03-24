@@ -34,18 +34,18 @@ public class Snake : Agent
     public Transform borderRight;
 
     // Movement interval in seconds
-    public float moveInterval = 0.01f;
+    public float moveInterval = 0.001f;
     private float timeSinceLastMove;
 
     // StreamWriter for logging
     private StreamWriter logWriter;
 
     // Updated rewards
-    private const float rewardForEatingFood = 1.5f; // Increased reward for eating food
-    private const float rewardForSurvivalPerStep = 0.01f; // New survival reward for each step without dying
-    private const float penaltyForGameOver = -5f; // Reduced penalty for hitting walls or tail
-    private const float baseRewardForMovingTowardsFood = 0.05f; // Base reward for moving towards food
-    private const float penaltyForMovingAwayFromFood = -0.02f; // Adjusted penalty for moving away from food
+    private const float rewardForEatingFood = 5f; // Increased reward for eating food
+    private const float rewardForSurvivalPerStep = 0.05f; // New survival reward for each step without dying
+    private const float penaltyForGameOver = -10f; // Reduced penalty for hitting walls or tail
+    private const float baseRewardForMovingTowardsFood = 0.5f; // Base reward for moving towards food
+    private const float penaltyForMovingAwayFromFood = -0.3f; // Adjusted penalty for moving away from food
 
 
     // Begin a training session
@@ -57,6 +57,7 @@ public class Snake : Agent
         ate = false;
         ClearFood();
         SpawnFood();
+        SetReward(0);
 
         // Initialize StreamWriter with a unique file name for each game session
         string fileName = $"SnakeGameLog_{System.DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
