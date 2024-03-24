@@ -25,3 +25,6 @@
    bayleyking13@gmail.com
 
    bking2@udayton.edu
+
+## Abstract:
+GameBrain is an innovative project that combines machine learning techniques with the Unity game engine to create a dynamic and evolving gaming experience. By leveraging machine learning (ML) agents, our project aims to develop intelligent game characters that learn and adapt to the game environment in real-time, while leveraging Large Language Models (LLM) to help in future game features and ML agent development.
