@@ -2,7 +2,7 @@ from tools.document_search import DocumentSearchTool
 
 VERBOSE = True
 MAX_ITERATIONS = 3
-FILE_PATH = "C:\\Users\\gmful\\Downloads\\senior_design\\LLM\\example.txt"  # Input the file path you want the LLM to help analyze
+FILE_PATH = r"C:\Users\gmful\Downloads\results\results\newRewardRun\llm_logs\SnakeGameLog_20240301_220838.txt"  # Input the file path you want the LLM to help analyze
 IS_CSHARP_CODE = False  # Boolean for whether to analyze the c# code or the Snake .txt game states
 
 if IS_CSHARP_CODE:
