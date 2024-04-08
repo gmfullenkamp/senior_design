@@ -929,7 +929,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 2000
   tailPrefab: {fileID: 841850179440849021, guid: 4558037657cc8b24793f5bee10101eaf, type: 3}
   foodPrefab: {fileID: 303589142199753816, guid: 51b141c4c833733448df67d0e3a67834, type: 3}
   borderTop: {fileID: 1301129965}
@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 6
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0

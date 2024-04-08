@@ -26,7 +26,7 @@ public class Snake : Agent
 
     // Food prefab
     public Transform foodPrefab;
-    private Transform currentFoodInstance;
+    public Transform currentFoodPrefab;
 
     // Walls
     public Transform borderTop;
@@ -103,9 +103,8 @@ public class Snake : Agent
             }
         } while (isPositionOccupied); // Repeat until an unoccupied position is found
 
-        // Instantiate the food at (x, y) and update the current food instance
-        GameObject foodInstance = Instantiate(foodPrefab.gameObject, new Vector2(x, y), Quaternion.identity);
-        currentFoodInstance = foodInstance.transform;
+        // Instantiate the food at (x, y)
+        currentFoodPrefab = Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
     }
 
     void ClearFood()
@@ -120,9 +119,8 @@ public class Snake : Agent
     // ML observations
     public override void CollectObservations(VectorSensor sensor)
     {
-        // In CollectObservations:
         sensor.AddObservation(transform.localPosition);
-        sensor.AddObservation(currentFoodInstance.position);
+        sensor.AddObservation(currentFoodPrefab.localPosition);
         // sensor.AddObservation(borderTop.localPosition);
         // sensor.AddObservation(borderBottom.localPosition);
         // sensor.AddObservation(borderLeft.localPosition);
@@ -151,6 +149,60 @@ public class Snake : Agent
             Move();
             RewardBasedOnDistanceToFood();
             timeSinceLastMove = 0;
+        }
+    }
+
+    // // Player control
+    // public override void Heuristic(in ActionBuffers actionsOut)
+    // {
+    //     var discreteActions = actionsOut.DiscreteActions;
+    //     if (Input.GetKey(KeyCode.RightArrow))
+    //     {
+    //         discreteActions[0] = 0;
+    //     }
+    //     else if (Input.GetKey(KeyCode.UpArrow))
+    //     {
+    //         discreteActions[0] = 1;
+    //     }
+    //     else if (Input.GetKey(KeyCode.LeftArrow))
+    //     {
+    //         discreteActions[0] = 2;
+    //     }
+    //     else if (Input.GetKey(KeyCode.DownArrow))
+    //     {
+    //         discreteActions[0] = 3;
+    //     }
+    //     else
+    //     {
+    //         discreteActions[0] = 4;
+    //     }
+    // }
+
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        var discreteActions = actionsOut.DiscreteActions;
+        Debug.Log($"Food: {(Vector2)currentFoodPrefab.localPosition}, Snake: {(Vector2)transform.position}");
+        Vector2 directionToFood = (Vector2)currentFoodPrefab.localPosition - (Vector2)transform.position;
+        bool shouldMoveHorizontally = Mathf.Abs(directionToFood.x) > Mathf.Abs(directionToFood.y);
+
+        if (Random.value < 0.2f) // Example: 10% chance for a random move
+        {
+            int randomDirection = Random.Range(0, 4);
+            discreteActions[0] = randomDirection;
+        }
+        else
+        {
+            // Assuming directionToFood and shouldMoveHorizontally have been correctly calculated as before
+            if (shouldMoveHorizontally)
+            {
+                // Decide to move right (0) or left (2)
+                discreteActions[0] = directionToFood.x > 0 ? 0 : 2;
+            }
+            else
+            {
+                // Decide to move up (1) or down (3)
+                discreteActions[0] = directionToFood.y > 0 ? 1 : 3;
+            }
         }
     }
 
@@ -195,7 +247,7 @@ public class Snake : Agent
 
     void RewardBasedOnDistanceToFood()
     {
-        float currentDistanceToFood = Vector2.Distance(transform.localPosition, currentFoodInstance.position);
+        float currentDistanceToFood = Vector2.Distance(transform.localPosition, currentFoodPrefab.localPosition);
 
         // Calculate change in distance to food
         float distanceChange = lastDistanceToFood - currentDistanceToFood;
@@ -244,59 +296,6 @@ public class Snake : Agent
             logWriter.WriteLine($"Final Score {tail.Count}");
             logWriter.Close();
             EndEpisode();
-        }
-    }
-
-    // public override void Heuristic(in ActionBuffers actionsOut)
-    // {
-    //     var discreteActions = actionsOut.DiscreteActions;
-    //     Vector2 directionToFood = (Vector2)currentFoodInstance.position - (Vector2)transform.position;
-    //     bool shouldMoveHorizontally = Mathf.Abs(directionToFood.x) > Mathf.Abs(directionToFood.y);
-
-    //     if (Random.value < 0.2f) // Example: 10% chance for a random move
-    //     {
-    //         int randomDirection = Random.Range(0, 4);
-    //         discreteActions[0] = randomDirection;
-    //     }
-    //     else
-    //     {
-    //         // Assuming directionToFood and shouldMoveHorizontally have been correctly calculated as before
-    //         if (shouldMoveHorizontally)
-    //         {
-    //             // Decide to move right (0) or left (2)
-    //             discreteActions[0] = directionToFood.x > 0 ? 0 : 2;
-    //         }
-    //         else
-    //         {
-    //             // Decide to move up (1) or down (3)
-    //             discreteActions[0] = directionToFood.y > 0 ? 1 : 3;
-    //         }
-    //     }
-    // }
-
-    // Player control
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        var discreteActions = actionsOut.DiscreteActions;
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            discreteActions[0] = 0;
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            discreteActions[0] = 1;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            discreteActions[0] = 2;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            discreteActions[0] = 3;
-        }
-        else
-        {
-            discreteActions[0] = 4;
         }
     }
 }
