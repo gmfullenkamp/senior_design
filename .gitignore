@@ -6,10 +6,5 @@ Snake/Packages/
 Snake/Logs/
 Snake/Temp/
 Snake/SnakeGameLog_*.txt
-results/firstTrainingRun/
-results/secondTrainingRun/
-results/thirdTrainingRun/
-results/fourthTrainingRun/
-results/fifthTrainingRun/
-results/sixthTrainingRun/
+results/
 .venv/
