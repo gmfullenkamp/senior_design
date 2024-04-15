@@ -31,7 +31,7 @@ behaviors:
 
     # Trainer configurations common to all trainers
     max_steps: 5.0e7
-    time_horizon: 64
+    time_horizon: 256
     summary_freq: 10000
     keep_checkpoints: 5
     checkpoint_interval: 50000

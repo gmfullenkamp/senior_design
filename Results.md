@@ -17,7 +17,7 @@ This document details the journey of developing a reinforcement learning (RL) ag
 ### Implementation Details
 - **Programming Language**: Utilized C# for game development.
 - **Key Challenges**: Ensuring smooth movement and accurate collision detection.
-- [Snake Game Play Example](Snake_Example.png)
+- [Snake Game Play Example](results/Snake_Example.png)
 
 ## Phase 2: Integrating ML-Agents
 
@@ -44,7 +44,6 @@ This document details the journey of developing a reinforcement learning (RL) ag
 
 ### Training Evolution
 - **Initial Training**: Conducted on a smaller 5x5 grid, achieving a high score of 7 food items consumed.
-- **Image Placeholder**: *\[Add training process image here\]*
 
 ## Phase 3: Fine-Tuning and Scaling Up
 
@@ -52,9 +51,19 @@ This document details the journey of developing a reinforcement learning (RL) ag
 - **Larger Map**: Transitioned to a 25x25 grid to test the agent's performance in a more extensive environment.
 - **Ongoing Process**: Currently fine-tuning the model on this larger scale to enhance its adaptability and decision-making skills.
 
+## Latest Training Results
+
+During the final phase of training, the RL agent made significant progress, achieving a score of up to 19 food items consumed within 100 steps of the game. Despite not being able to automatically generate feature suggestions and code documents at the end of training, we obtained valuable insights from our generated files. Here are some example documents:
+
+- [RL Agent Gameplay Output](results/SnakeGameLog_20240408_213935.txt)
+- [LLM Feature Recommendations](results/SnakeGameLogRecommendation.txt)
+- [Generated Code from LLM Suggestions](results/SnakeGameLogRecommendation.cs)
+
+Please note that while these documents provide valuable insights, they were not automatically generated at the end of training but rather created based on document ingestion from the code and RL agent log text.
+
 ## Future Improvements and Advanced Development
 
-### Dynamic Game Difficulty Using LLMs
+### Dynamic Game and RL Devlopment Using LLMs
 
 #### Concept Overview
 - **Objective**: To evolve the game environment dynamically, making it more challenging as the RL agent's performance improves.
@@ -82,4 +91,3 @@ As we look to the future, these advancements aim not only to elevate the project
 ## Summary
 
 As of the conclusion of the first semester, significant progress has been made in training a reinforcement learning agent to play a snake game effectively. The journey has involved iterative development, constant fine-tuning of the training environment and reward system, and adapting to the challenges that emerged. The project continues to evolve, with future efforts focused on refining the agent's performance in more complex environments.
-

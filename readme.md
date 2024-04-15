@@ -1,26 +1,24 @@
 # Fall Design Reports - Binary Bandits
 
 ## Table of Contents
-- [Fall Design Reports - Binary Bandits](#fall-design-reports---binary-bandits)
-  - [Table of Contents](#table-of-contents)
-  - [Team Names and Project Abstract](#team-names-and-project-abstract)
-  - [Project Description](#project-description)
-  - [Development Environment Setup](#development-environment-setup)
-  - [Unity Game, Code, and Assets](#unity-game-code-and-assets)
-  - [Current Results](#current-results)
-  - [User Stories and Design Diagrams](#user-stories-and-design-diagrams)
-    - [User Stories](#user-stories)
-    - [Design Diagrams](#design-diagrams)
-  - [Project Tasks and Timeline](#project-tasks-and-timeline)
-    - [Task List](#task-list)
-    - [Timeline](#timeline)
-    - [Effort Matrix](#effort-matrix)
-  - [ABET Concerns Essay](#abet-concerns-essay)
-  - [PPT Slideshow](#ppt-slideshow)
-  - [Self-Assessment Essays](#self-assessment-essays)
-  - [Professional Biographies](#professional-biographies)
-  - [Budget](#budget)
-  - [Appendix](#appendix)
+1. [Team Names and Project Abstract](#team-names-and-project-abstract)
+2. [Project Description](#project-description)
+3. [Development Environment Setup](#development-environment-setup)
+4. [Unity Game, Code, and Assets](#unity-game-code-and-assets)
+5. [Current Results](#current-results)
+6. [User Stories and Design Diagrams](#user-stories-and-design-diagrams)
+   - [User Stories](#user-stories)
+   - [Design Diagrams](#design-diagrams)
+7. [Project Tasks and Timeline](#project-tasks-and-timeline)
+   - [Task List](#task-list)
+   - [Timeline](#timeline)
+   - [Effort Matrix](#effort-matrix)
+8. [ABET Concerns Essay](#abet-concerns-essay)
+9. [PPT Slideshow](#ppt-slideshow)
+10. [Self-Assessment Essays](#self-assessment-essays)
+11. [Professional Biographies](#professional-biographies)
+12. [Budget](#budget)
+13. [Appendix](#appendix)
 
 ## Team Names and Project Abstract
 **Team Name:** Binary Bandits  
@@ -75,7 +73,6 @@
 [Professional Biography Fullenkamp](Homework_Essays/Biographies/Grant_Fullenkamp.md)
 [Professional Biography Heinen](Homework_Essays/Biographies/Noah_Heinen.md)
 [Professional Biography Krishnan](Homework_Essays/Biographies/Grant_Fullenkamp.md)
-
 
 ## Budget
 [Budget Content](Budget.md)

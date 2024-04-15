@@ -152,59 +152,59 @@ public class Snake : Agent
         }
     }
 
-    // // Player control
-    // public override void Heuristic(in ActionBuffers actionsOut)
-    // {
-    //     var discreteActions = actionsOut.DiscreteActions;
-    //     if (Input.GetKey(KeyCode.RightArrow))
-    //     {
-    //         discreteActions[0] = 0;
-    //     }
-    //     else if (Input.GetKey(KeyCode.UpArrow))
-    //     {
-    //         discreteActions[0] = 1;
-    //     }
-    //     else if (Input.GetKey(KeyCode.LeftArrow))
-    //     {
-    //         discreteActions[0] = 2;
-    //     }
-    //     else if (Input.GetKey(KeyCode.DownArrow))
-    //     {
-    //         discreteActions[0] = 3;
-    //     }
-    //     else
-    //     {
-    //         discreteActions[0] = 4;
-    //     }
-    // }
-
+    // Player control
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
-        Debug.Log($"Food: {(Vector2)currentFoodPrefab.localPosition}, Snake: {(Vector2)transform.position}");
-        Vector2 directionToFood = (Vector2)currentFoodPrefab.localPosition - (Vector2)transform.position;
-        bool shouldMoveHorizontally = Mathf.Abs(directionToFood.x) > Mathf.Abs(directionToFood.y);
-
-        if (Random.value < 0.2f) // Example: 10% chance for a random move
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            int randomDirection = Random.Range(0, 4);
-            discreteActions[0] = randomDirection;
+            discreteActions[0] = 0;
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            discreteActions[0] = 1;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            discreteActions[0] = 2;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            discreteActions[0] = 3;
         }
         else
         {
-            // Assuming directionToFood and shouldMoveHorizontally have been correctly calculated as before
-            if (shouldMoveHorizontally)
-            {
-                // Decide to move right (0) or left (2)
-                discreteActions[0] = directionToFood.x > 0 ? 0 : 2;
-            }
-            else
-            {
-                // Decide to move up (1) or down (3)
-                discreteActions[0] = directionToFood.y > 0 ? 1 : 3;
-            }
+            discreteActions[0] = 4;
         }
     }
+
+    // public override void Heuristic(in ActionBuffers actionsOut)
+    // {
+    //     var discreteActions = actionsOut.DiscreteActions;
+    //     Debug.Log($"Food: {(Vector2)currentFoodPrefab.localPosition}, Snake: {(Vector2)transform.position}");
+    //     Vector2 directionToFood = (Vector2)currentFoodPrefab.localPosition - (Vector2)transform.position;
+    //     bool shouldMoveHorizontally = Mathf.Abs(directionToFood.x) > Mathf.Abs(directionToFood.y);
+
+    //     if (Random.value < 0.2f) // Example: 10% chance for a random move
+    //     {
+    //         int randomDirection = Random.Range(0, 4);
+    //         discreteActions[0] = randomDirection;
+    //     }
+    //     else
+    //     {
+    //         // Assuming directionToFood and shouldMoveHorizontally have been correctly calculated as before
+    //         if (shouldMoveHorizontally)
+    //         {
+    //             // Decide to move right (0) or left (2)
+    //             discreteActions[0] = directionToFood.x > 0 ? 0 : 2;
+    //         }
+    //         else
+    //         {
+    //             // Decide to move up (1) or down (3)
+    //             discreteActions[0] = directionToFood.y > 0 ? 1 : 3;
+    //         }
+    //     }
+    // }
 
     void Move()
     {
