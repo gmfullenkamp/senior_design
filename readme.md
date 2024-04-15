@@ -15,10 +15,11 @@
    - [Effort Matrix](#effort-matrix)
 8. [ABET Concerns Essay](#abet-concerns-essay)
 9. [PPT Slideshow](#ppt-slideshow)
-10. [Self-Assessment Essays](#self-assessment-essays)
-11. [Professional Biographies](#professional-biographies)
-12. [Budget](#budget)
-13. [Appendix](#appendix)
+10. [EXPO Poster](#expo-poster)
+11. [Self-Assessment Essays](#self-assessment-essays)
+12. [Professional Biographies](#professional-biographies)
+13. [Budget](#budget)
+14. [Appendix](#appendix)
 
 ## Team Names and Project Abstract
 **Team Name:** Binary Bandits  
@@ -63,6 +64,9 @@
 ## PPT Slideshow
 [PPT Slideshow Content](PPT_Slideshow.pdf)
 [PPT Slideshow Presentation Video](https://docs.google.com/presentation/d/1vy3e9rN0GXNa-4BOibAeLb_5lTGI1_t1juLa8nzNsdU/edit?usp=sharing)
+
+## EXPO Poster
+[EXPO Poster](Expo_Poster.pdf)
 
 ## Self-Assessment Essays
 [Self-Assessment Essay Fullenkamp](Homework_Essays/Fullenkamp_Individual_Capstone_Assessment.pdf)
